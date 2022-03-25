@@ -71,24 +71,6 @@
         }
       ]
     ],
-    "particle": [
-      "container",
-      [
-        {
-          "name": "particleId",
-          "type": "varint"
-        },
-        {
-          "name": "data",
-          "type": [
-            "particleData",
-            {
-              "compareTo": "particleId"
-            }
-          ]
-        }
-      ]
-    ],
     "particleData": [
       "switch",
       {
@@ -217,6 +199,24 @@
         },
         "default": "void"
       }
+    ],
+    "particle": [
+      "container",
+      [
+        {
+          "name": "particleId",
+          "type": "varint"
+        },
+        {
+          "name": "data",
+          "type": [
+            "particleData",
+            {
+              "compareTo": "particleId"
+            }
+          ]
+        }
+      ]
     ],
     "ingredient": [
       "array",
