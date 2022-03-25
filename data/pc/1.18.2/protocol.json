@@ -1359,75 +1359,70 @@
             },
             {
               "name": "action",
-              "type": "varint"
-            },
-            {
-              "name": "title",
               "type": [
-                "switch",
-                {
-                  "compareTo": "action",
-                  "fields": {
-                    "0": "string",
-                    "3": "string"
-                  },
-                  "default": "void"
+                "mapper", {
+                  "type": "varint",
+                  "mappings": {
+                    "0": "add",
+                    "1": "remove",
+                    "2": "update_health",
+                    "3": "update_title",
+                    "4": "update_style",
+                    "5": "update_flags"
+                  }
                 }
               ]
             },
             {
-              "name": "health",
+              "name":"action_data",
               "type": [
                 "switch",
                 {
                   "compareTo": "action",
                   "fields": {
-                    "0": "f32",
-                    "2": "f32"
-                  },
-                  "default": "void"
-                }
-              ]
-            },
-            {
-              "name": "color",
-              "type": [
-                "switch",
-                {
-                  "compareTo": "action",
-                  "fields": {
-                    "0": "varint",
-                    "4": "varint"
-                  },
-                  "default": "void"
-                }
-              ]
-            },
-            {
-              "name": "dividers",
-              "type": [
-                "switch",
-                {
-                  "compareTo": "action",
-                  "fields": {
-                    "0": "varint",
-                    "4": "varint"
-                  },
-                  "default": "void"
-                }
-              ]
-            },
-            {
-              "name": "flags",
-              "type": [
-                "switch",
-                {
-                  "compareTo": "action",
-                  "fields": {
-                    "0": "u8",
-                    "5": "u8"
-                  },
-                  "default": "void"
+                    "add": [
+                      "container",
+                      [
+                        {
+                          "name": "title",
+                          "type": "string"
+                        },
+                        {
+                          "name": "health",
+                          "type": "f32"
+                        },
+                        {
+                          "name": "color",
+                          "type": "varint"
+                        },
+                        {
+                          "name": "dividers",
+                          "type": "varint"
+                        },
+                        {
+                          "name": "flags",
+                          "type": "u8"
+                        }
+                      ]
+                    ],
+                    "remove": "void",
+                    "update_health": "f32",
+                    "update_title": "string",
+                    "update_style": [
+                      "container",
+                      [
+                        {
+                          "name": "color",
+                          "type": "varint"
+                        },
+                        {
+                          "name": "dividers",
+                          "type": "varint"
+                        }
+                      ]
+                    ],
+                    "update_flags": "u8"
+                  }
                 }
               ]
             }
